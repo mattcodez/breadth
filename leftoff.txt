@@ -1,3 +1,4 @@
+9-22: Trim first column of file first
 9-21: Peer authentication failed for user "importer"
 9-17: Just take the first column, the domain, don't worry about other far out stuff right now.
   Schema should be ready, start on import script.

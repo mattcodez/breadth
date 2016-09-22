@@ -5,11 +5,14 @@ if [ -z "$1" ]; then
   exit
 fi
 
+#first run: cut -f1 file > justdomain.tsv
+
 file=$1;
-filepath=$(realpath file);
+filepath=$(realpath $file);
 
 psql \
   --username=importer \
+  --host=localhost \
   --dbname=breadth <<EOF
-COPY domain_staging("domain") FROM '${filepath}' TEXT DELIMETER '\t';
+\COPY public.domain_staging("domain") FROM '${filepath}';
 EOF
