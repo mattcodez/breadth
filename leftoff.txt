@@ -1,3 +1,7 @@
+9-23:
+See if new function works.
+New table for domains, use stored procedure to populate
+  from domain_staging
 9-22: Trim first column of file first
 9-21: Peer authentication failed for user "importer"
 9-17: Just take the first column, the domain, don't worry about other far out stuff right now.
