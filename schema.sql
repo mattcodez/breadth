@@ -17,13 +17,12 @@ CREATE TABLE domains (
   "domain"  VARCHAR(259) UNIQUE NOT NULL
 );
 
-CREATE OR REPLACE FUNCTION add_domains_from_staging()
+CREATE OR REPLACE FUNCTION add_domains_from_staging(OUT insertcount int)
 RETURNS int AS $$
 BEGIN
   INSERT INTO domains(domain)
   SELECT domain FROM domain_staging
   ON CONFLICT DO NOTHING;
   GET DIAGNOSTICS insertcount = ROW_COUNT;
-  RETURNING insertcount;
 END;
 $$ LANGUAGE plpgsql;

@@ -1,4 +1,5 @@
 9-23:
+Function works, so, schema for holding responses?
 See if new function works.
 New table for domains, use stored procedure to populate
   from domain_staging
