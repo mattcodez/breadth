@@ -1,3 +1,5 @@
+9-26: Thinking cheerio and request for scraping
+9-24: Start scraping
 9-23:
 Function works, so, schema for holding responses?
 See if new function works.
