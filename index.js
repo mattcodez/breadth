@@ -6,7 +6,7 @@ var pg = require('knex')({
   connection: process.env.PG_CONNECTION_STRING,
   searchPath: 'knex,public'
 });
-console.log(process.env.PG_CONNECTION_STRING);
+
 pg.select('domain')
 .from('domains')
 .whereBetween('id', [400, 425])

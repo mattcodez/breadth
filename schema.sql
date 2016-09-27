@@ -17,6 +17,20 @@ CREATE TABLE domains (
   "domain"  VARCHAR(259) UNIQUE NOT NULL
 );
 
+CREATE TABLE pages (
+  "id"      SERIAL PRIMARY KEY,
+  "domain"  INT REFERENCES "domains",
+  "url"     TEXT
+);
+
+CREATE TABLE pages_captures(
+  "id"          SERIAL PRIMARY KEY,
+  "page"        INT REFERENCES "pages",
+  "body"        TEXT,
+  "created_at"  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX pages_body_idx ON pages_captures USING GIN (to_tsvector('english', "body"));
+
 CREATE OR REPLACE FUNCTION add_domains_from_staging(OUT insertcount int)
 RETURNS int AS $$
 BEGIN

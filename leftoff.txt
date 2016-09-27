@@ -1,3 +1,10 @@
+9-27: Schema should be done, start on capture code.
+    How to store history of page captures?
+    Should we just have multiple "pages" or another child table? URL would
+    get repeated. What about when page goes away? Store last status here?
+    What about re-directs, which URL do you store then?
+    I think fully normalized way is to just store url in pages with any
+    redirects and then have a child table for history.
 9-26: Can't get knex to connect, env variable not getting set. How does
 source command work in bash?
  Thinking cheerio and request for scraping
