@@ -1,4 +1,6 @@
-9-26: Thinking cheerio and request for scraping
+9-26: Can't get knex to connect, env variable not getting set. How does
+source command work in bash?
+ Thinking cheerio and request for scraping
 9-24: Start scraping
 9-23:
 Function works, so, schema for holding responses?
