@@ -7,10 +7,12 @@ var pg = require('knex')({
   searchPath: 'knex,public'
 });
 
+//use where instead of limit to ensure we don't repeate because
+//of arbitrary order or inserts
 pg.select('domain')
-.from('domains')
-.whereBetween('id', [400, 425])
-.then(rows => console.dir(rows));
+  .from('domains')
+  .whereBetween('id', [400, 425])
+  .then(rows => console.dir(rows));
 
 // request("https://www.reddit.com", function(error, response, body) {
 //   if(error) {

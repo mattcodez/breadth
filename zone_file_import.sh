@@ -6,6 +6,7 @@ if [ -z "$1" ]; then
 fi
 
 #first run: cut -f1 file > justdomain.tsv
+#also remove tld entry ex. (guru.)
 
 file=$1;
 filepath=$(realpath $file);

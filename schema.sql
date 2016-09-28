@@ -24,10 +24,11 @@ CREATE TABLE pages (
 );
 
 CREATE TABLE pages_captures(
-  "id"          SERIAL PRIMARY KEY,
-  "page"        INT REFERENCES "pages",
-  "body"        TEXT,
-  "created_at"  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  "id"            SERIAL PRIMARY KEY,
+  "page"          INT REFERENCES "pages",
+  "response_code" INT,
+  "body"          TEXT,
+  "created_at"    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 CREATE INDEX pages_body_idx ON pages_captures USING GIN (to_tsvector('english', "body"));
 
