@@ -20,7 +20,7 @@ CREATE TABLE domains (
 CREATE TABLE pages (
   "id"      SERIAL PRIMARY KEY,
   "domain"  INT REFERENCES "domains",
-  "url"     TEXT
+  "url"     TEXT UNIQUE --this could be really bad for performance
 );
 
 CREATE TABLE pages_captures(

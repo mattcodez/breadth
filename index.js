@@ -33,7 +33,32 @@ function captureDomains(domains){
 }
 
 function captureDomain(){
-  request("https://www.reddit.com")
+  //find page, if it doesn't exist, add domain as url
+  pg.select('id','domain','url')
+    .from('pages')
+    .where('domain', 141644)
+    .then(pages => {
+      const page = pages[0];
+      if (page){
+        capturePage({
+          pageId:page.id,
+          url:   page.url
+        });
+      }
+      else {
+        pg('pages')
+        .returning('id')
+        .insert({
+          domain: 141644,
+          url:    domain
+        })
+        .then(id => capturePage({pageId:id[0], url:domain}));
+      }
+    });
+}
+
+function capturePage({pageId,url}){
+  request(url)
   .then((response, body) => {
     console.log("Status code: " + response.statusCode);
 
