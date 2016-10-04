@@ -20,6 +20,7 @@
     "cheerio": "^0.22.0",
     "knex": "^0.12.1",
     "pg": "^6.1.0",
-    "request": "^2.75.0"
+    "request": "^2.75.0",
+    "request-promise-native": "^1.0.3"
   }
 }

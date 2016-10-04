@@ -1,3 +1,5 @@
+10-3: Just do a test site for now, need to parse robots.txt before
+    beginning to follow links.
 9-27: Schema should be done, start on capture code.
     How to store history of page captures?
     Should we just have multiple "pages" or another child table? URL would

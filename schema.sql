@@ -25,7 +25,7 @@ CREATE TABLE pages (
 
 CREATE TABLE pages_captures(
   "id"            SERIAL PRIMARY KEY,
-  "page"          INT REFERENCES "pages",
+  "page"          INT REFERENCES "pages" NOT NULL,
   "response_code" INT,
   "body"          TEXT,
   "created_at"    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
