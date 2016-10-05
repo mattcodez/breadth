@@ -31,7 +31,7 @@ const pg = require('knex')({
 function captureDomains(domains){
   const activeRequests = []; //TODO: maybe use a weakmap here
 }
-
+captureDomain();
 function captureDomain(){
   //find page, if it doesn't exist, add domain as url
   pg.select('id','domain','url')
@@ -64,9 +64,9 @@ function capturePage({pageId,url}){
 
     const $ = cheerio.load(body);
     pg('pages_captures').insert({
-      page:
+      page: pageId,
       response_code: response.statusCode,
-      body: $('body').text();
+      body: $('body').text()
     });
   })
   .catch(err => console.error("Error: " + err));

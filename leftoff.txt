@@ -1,3 +1,4 @@
+10-4: knex can't acquire a connection again
 10-3: Just do a test site for now, need to parse robots.txt before
     beginning to follow links.
 9-27: Schema should be done, start on capture code.
