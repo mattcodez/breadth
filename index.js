@@ -50,9 +50,9 @@ function captureDomain(){
         .returning('id')
         .insert({
           domain: 141644,
-          url:    domain
+          url: 'http://www.reddit.com'
         })
-        .then(id => capturePage({pageId:id[0], url:domain}));
+        .then(id => capturePage({pageId:id[0], url:'http://www.reddit.com'}));
       }
     });
 }
@@ -69,5 +69,5 @@ function capturePage({pageId,url}){
       body: $('body').text()
     });
   })
-  .catch(err => console.error("Error: " + err));
+  .catch(err => console.error(err));
 }
