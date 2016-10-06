@@ -59,15 +59,16 @@ function captureDomain(){
 
 function capturePage({pageId,url}){
   request(url)
-  .then((response, body) => {
-    console.log("Status code: " + response.statusCode);
+  .then((body) => {
+    //console.log("Status code: " + response.statusCode);
 
     const $ = cheerio.load(body);
     pg('pages_captures').insert({
       page: pageId,
-      response_code: response.statusCode,
+      //response_code: response.statusCode,
       body: $('body').text()
-    });
+    })
+    .then(id => console.log('logged site', url));
   })
   .catch(err => console.error(err));
 }
