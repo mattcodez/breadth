@@ -58,14 +58,14 @@ function captureDomain(){
 }
 
 function capturePage({pageId,url}){
-  request(url)
-  .then((body) => {
-    //console.log("Status code: " + response.statusCode);
+  request({url, resolveWithFullResponse:true})
+  .then((res) => {
+    console.log("Status code: " + res.statusCode);
 
-    const $ = cheerio.load(body);
+    const $ = cheerio.load(res.body);
     pg('pages_captures').insert({
       page: pageId,
-      //response_code: response.statusCode,
+      response_code: res.statusCode,
       body: $('body').text()
     })
     .then(id => console.log('logged site', url));
