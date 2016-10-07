@@ -1,4 +1,8 @@
-10-6: Do something with capture text?
+10-6: Get crazy basic search working, show first found words
+  highlighted with simple context and link. That's it.
+  After that, time to go back to getting more sites logged.
+  Start organizing sooner rather than later.
+  Do something with capture text?
 10-5: First captures working
   Cheerio: Cannot read property 'parent' of undefined
   Let's just assume www. for all domains

@@ -2,12 +2,16 @@
 const request = require('request-promise-native');
 const cheerio = require('cheerio');
 //chose express because it has a built-in static file server
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
 app.use(express.static(__dirname + '/public'));
 
 app.listen(process.env.PORT || 3000);
+
+app.get('/api/search', (req, res) => {
+  const search = req.params('searchValue');
+});
 
 const MAX_CONCURRENT_REQUESTS = 3;
 
