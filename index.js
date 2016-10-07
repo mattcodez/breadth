@@ -1,6 +1,13 @@
 "use strict";
 const request = require('request-promise-native');
 const cheerio = require('cheerio');
+//chose express because it has a built-in static file server
+var express = require('express');
+var app = express();
+
+app.use(express.static(__dirname + '/public'));
+
+app.listen(process.env.PORT || 3000);
 
 const MAX_CONCURRENT_REQUESTS = 3;
 
@@ -9,24 +16,6 @@ const pg = require('knex')({
   connection: process.env.PG_CONNECTION_STRING,
   searchPath: 'knex,public'
 });
-
-//use where instead of limit to ensure we don't repeate because
-//of arbitrary order or inserts
-// pg.select('domain')
-//   .from('domains')
-//   .whereBetween('id', [400, 425])
-//   .then(function(domains){
-//     request("https://www.reddit.com", function(error, response, body) {
-//       if(error) {
-//         console.error("Error: " + error);
-//       }
-//       console.log("Status code: " + response.statusCode);
-//
-//       var $ = cheerio.load(body);
-//       console.log($('body').text().substring(100,150));
-//
-//     });
-//   });
 
 function captureDomains(domains){
   const activeRequests = []; //TODO: maybe use a weakmap here
@@ -60,7 +49,7 @@ function captureDomain(){
 function capturePage({pageId,url}){
   request({url, resolveWithFullResponse:true})
   .then((res) => {
-    console.log("Status code: " + res.statusCode);
+    console.log(url + " Status code: " + res.statusCode);
 
     const $ = cheerio.load(res.body);
     pg('pages_captures').insert({

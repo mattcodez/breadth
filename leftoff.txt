@@ -1,3 +1,4 @@
+10-6: Do something with capture text?
 10-5: First captures working
   Cheerio: Cannot read property 'parent' of undefined
   Let's just assume www. for all domains
