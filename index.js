@@ -5,14 +5,6 @@ const cheerio = require('cheerio');
 const express = require('express');
 const app = express();
 
-app.use(express.static(__dirname + '/public'));
-
-app.listen(process.env.PORT || 3000);
-
-app.get('/api/search', (req, res) => {
-  const search = req.params('searchValue');
-});
-
 const MAX_CONCURRENT_REQUESTS = 3;
 
 const pg = require('knex')({
@@ -20,6 +12,26 @@ const pg = require('knex')({
   connection: process.env.PG_CONNECTION_STRING,
   searchPath: 'knex,public'
 });
+
+app.use(express.static(__dirname + '/public'));
+
+app.listen(
+  process.env.PORT || 3000,
+  () => console.log('Server listening on port 3000 (probably)')
+);
+
+app.get('/api/search', (req, res) => {
+  const search = req.param('s');
+  pg.raw(
+    `SELECT
+      ts_headline(body,?,'MinWords=5, MaxWords=9')
+    FROM pages_captures
+    WHERE body @@ TO_TSQUERY(?);`,
+    [search,search]
+  )
+  .then(contexts => res.json(contexts.rows));
+});
+
 
 function captureDomains(domains){
   const activeRequests = []; //TODO: maybe use a weakmap here

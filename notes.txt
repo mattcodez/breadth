@@ -1,1 +1,2 @@
 psql login: sudo -u postgres psql
+sudo iwlist wlo1 scan
