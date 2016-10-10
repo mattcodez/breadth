@@ -1,3 +1,4 @@
+10-10: -Might as well get React going for client. Use Webpack.
 10-7: -Use nodemon but need to move capture code outside flow
   -JSON working, get a search page working
 10-6: -Get crazy basic search working, show first found words

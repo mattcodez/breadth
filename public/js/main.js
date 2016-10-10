@@ -1,8 +1,9 @@
 'use strict';
 
 function init(){
-  const form = document.getElementBySelector('form#search');
-  form.addEventListener('submit', function(){
+  const form = document.querySelector('form#search');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
 
   });
 }

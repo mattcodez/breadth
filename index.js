@@ -8,7 +8,7 @@ const app = express();
 const MAX_CONCURRENT_REQUESTS = 3;
 
 const pg = require('knex')({
-  client: 'pg',
+  client:     'pg',
   connection: process.env.PG_CONNECTION_STRING,
   searchPath: 'knex,public'
 });
