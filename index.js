@@ -32,26 +32,30 @@ app.get('/api/search', (req, res) => {
   .then(contexts => res.json(contexts.rows));
 });
 
+app.post('/api/run_capture', (req, res) => {
+  captureDomain();
+  res.end();
+});
 
 function captureDomains(domains){
   const activeRequests = []; //TODO: maybe use a weakmap here
 }
-captureDomain();
+
 function captureDomain(){
   //find page, if it doesn't exist, add domain as url
-  pg.select('id','domain','url')
+  return pg.select('id','domain','url')
     .from('pages')
     .where('domain', 141644)
     .then(pages => {
       const page = pages[0];
       if (page){
-        capturePage({
+        return capturePage({
           pageId:page.id,
           url:   page.url
         });
       }
       else {
-        pg('pages')
+        return pg('pages')
         .returning('id')
         .insert({
           domain: 141644,
@@ -63,7 +67,7 @@ function captureDomain(){
 }
 
 function capturePage({pageId,url}){
-  request({url, resolveWithFullResponse:true})
+  return request({url, resolveWithFullResponse:true})
   .then((res) => {
     console.log(url + " Status code: " + res.statusCode);
 
@@ -73,7 +77,10 @@ function capturePage({pageId,url}){
       response_code: res.statusCode,
       body: $('body').text()
     })
-    .then(id => console.log('logged site', url));
+    .then(id => {
+      console.log('logged site', url);
+      return `logged site ${url}`;
+    });
   })
   .catch(err => console.error(err));
 }
