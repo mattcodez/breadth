@@ -1,3 +1,6 @@
+10-18: -Trying to get debugging to work with sourcemaps because
+no HTML seems to be rendering.
+10-15: -How do we proxy both servers for development?
 10-10: -Might as well get React going for client. Use Webpack.
 10-7: -Use nodemon but need to move capture code outside flow
   -JSON working, get a search page working

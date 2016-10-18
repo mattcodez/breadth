@@ -19,16 +19,18 @@
   },
   "homepage": "https://github.com/mattcodez/breadth#readme",
   "dependencies": {
+    "axios": "^0.15.2",
+    "bootstrap": "^4.0.0-alpha.3",
     "cheerio": "^0.22.0",
+    "eslint": "^3.8.1",
     "express": "^4.14.0",
     "knex": "^0.12.1",
-    "pg": "^6.1.0",
-    "request": "^2.75.0",
-    "request-promise-native": "^1.0.3",
-    "bootstrap": "^4.0.0-alpha.3",
     "node-sass": "^3.9.2",
+    "pg": "^6.1.0",
     "react": "15.3.0",
     "react-dom": "15.3.0",
+    "request": "^2.75.0",
+    "request-promise-native": "^1.0.3",
     "sass-loader": "^4.0.1"
   },
   "devDependencies": {
