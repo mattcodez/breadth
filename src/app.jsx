@@ -11,7 +11,7 @@ export default class App extends React.Component {
 
     axios.get('/api/search?s=news')
     .then(response => {
-      this.state.results = response;
+      this.setState({results: response.data});
     })
     .catch(error => {
       console.log(error);
@@ -20,7 +20,7 @@ export default class App extends React.Component {
 
   render() {
     let results =
-      (this.state.results || []).forEach(res => res.ts_headline);
+      (this.state.results || []).map(r => `<p>${r.ts_headline}</p>`);
     return (
       <div
         className="results"
