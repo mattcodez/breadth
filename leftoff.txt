@@ -1,3 +1,4 @@
+10-20: Implement text search box for results
 10-18: -Trying to get debugging to work with sourcemaps because
 no HTML seems to be rendering.
 10-15: -How do we proxy both servers for development?
