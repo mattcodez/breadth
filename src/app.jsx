@@ -11,7 +11,18 @@ export default class App extends React.Component {
     super(props);
     this.state = {};
 
-    axios.get('/api/search?s=news')
+    const searchForm = document.querySelector('FORM#search');
+    searchForm.addEventListener(
+      'submit',
+      e => {
+        e.preventDefault();
+        this.retrieveResultData(e.target['s'].value)
+      }
+    );
+  }
+
+  retrieveResultData(searchTerms){
+    axios.get('/api/search', {params:{s:searchTerms}})
     .then(response => {
       this.setState({results: response.data});
     })
