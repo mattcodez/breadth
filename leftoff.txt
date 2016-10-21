@@ -1,3 +1,7 @@
+10-21:
+  -Get case insensitive search working.
+  -Get some lead text on search results.
+  -Might be time to start indexing more (remember robots.txt first)
 10-20: Implement text search box for results
 10-18: -Trying to get debugging to work with sourcemaps because
 no HTML seems to be rendering.
