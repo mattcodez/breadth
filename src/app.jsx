@@ -4,6 +4,8 @@ import styles from './index.scss';
 import React from 'react';
 import axios from 'axios';
 
+import Results from './results.jsx';
+
 export default class App extends React.Component {
   constructor(props){
     super(props);
@@ -19,13 +21,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    let results =
-      (this.state.results || []).map(r => `<p>${r.ts_headline}</p>`);
-    return (
-      <div
-        className="results"
-        dangerouslySetInnerHTML={{__html: results}}>
-      </div>
-    )
+    return <Results data={this.state.results} />
   }
 }
