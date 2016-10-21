@@ -14,3 +14,11 @@ export default class Results extends React.Component {
     )
   }
 }
+
+Results.propTypes = {
+  data: React.PropTypes.array
+};
+
+Results.defaultProps = {
+  data: []
+};
