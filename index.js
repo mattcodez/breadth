@@ -1,6 +1,7 @@
 "use strict";
 const request = require('request-promise-native');
 const cheerio = require('cheerio');
+const parse = require('robots-txt-parse');
 //chose express because it has a built-in static file server
 const express = require('express');
 const app = express();
