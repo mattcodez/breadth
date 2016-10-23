@@ -1,3 +1,7 @@
+10-23: -Thinking we just check robots for disallow '/' on * and
+scrape if we're good. Also, maybe run scraper from command line
+for now. Allow to be stopped whenever, direct where to pick up from.
+Default to next uncaptured domain.
 10-22: -Really need to sit down and just start organizing server side.
 Maybe scrape and server code should be separate.
 -Started to work on robots parsing.
